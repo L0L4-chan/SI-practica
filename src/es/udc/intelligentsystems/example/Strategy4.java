@@ -12,10 +12,10 @@ public class Strategy4 implements SearchStrategy {
 
     @Override
     public ArrayList<Node> solve(SearchProblem p) throws Exception{
-        ArrayList<Node> explored = new ArrayList<Node>();
+        ArrayList<State> explored = new ArrayList<>();
         State currentState = p.getInitialState();
         Node nd = new Node(currentState);
-        explored.add(nd);
+        explored.add(currentState);
 
         int i = 1;
 
@@ -27,19 +27,19 @@ public class Strategy4 implements SearchStrategy {
             boolean modified = false;
             for (Action acc: availableActions) {
                 State s = p.result(currentState, acc);
-                Node sc = new Node(nd,s,0);
-                System.out.println((i++) + " - RESULT(" + currentState + ","+ acc + ")=" + sc);
-                if (!explored.contains(sc)) {
+                if (!explored.contains(s)) {
+                    Node sc = new Node(nd,s);
+                    System.out.println((i++) + " - RESULT(" + currentState + ","+ acc + ")=" + s);
                     nd = sc;
                     currentState = sc.getState();
                     System.out.println((i++) + " - " + sc + " NOT explored");
-                    explored.add(nd);
+                    explored.add(s);
                     modified = true;
                     System.out.println((i++) + " - Current state changed to " + currentState);
                     break;
                 }
                 else
-                    System.out.println((i++) + " - " + sc + " already explored");
+                    System.out.println((i++) + " - " + s + " already explored");
             }
             if (!modified) throw new Exception("No solution could be found");
         }
