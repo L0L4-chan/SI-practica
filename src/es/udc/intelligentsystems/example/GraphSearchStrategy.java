@@ -5,14 +5,14 @@ import es.udc.intelligentsystems.*;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class Strategy4 implements SearchStrategy {
-
-    public Strategy4() {
+public class GraphSearchStrategy implements SearchStrategy {
+    public GraphSearchStrategy() {
     }
 
     @Override
     public ArrayList<Node> solve(SearchProblem p) throws Exception{
         ArrayList<State> explored = new ArrayList<>();
+        Stack<Node> border = new Stack<>();
         State currentState = p.getInitialState();
         Node nd = new Node(currentState);
         explored.add(currentState);
@@ -40,8 +40,11 @@ public class Strategy4 implements SearchStrategy {
                 }
                 else
                     System.out.println((i++) + " - " + s + " already explored");
+                border.add(new Node(nd,s));
             }
-            if (!modified) throw new Exception("No solution could be found");
+            if (!modified) {
+                nd = border.pop();
+            }
         }
         System.out.println((i++) + " - END - " + currentState);
         return solution(nd);
@@ -63,3 +66,4 @@ public class Strategy4 implements SearchStrategy {
         return solution;
     }
 }
+
