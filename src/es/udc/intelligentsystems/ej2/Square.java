@@ -27,9 +27,22 @@ public class Square extends State {
         return n;
     }
 
-    public void setPosition(int x, int y, int n) {
-        this.matrix[x][y] = n;
+    public Position getEmptyPosition(){
+        for (int i = 0; i< n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (this.getPosition(i, j) != 0) {
+                    return new Position(i, j);
+
+                }
+            }
+        }
+            return null;
     }
+
+    public void setPosition(Position p, int n) {
+        this.matrix[p.x][p.y] = n;
+    }
+
 
     @Override
     public String toString() {
