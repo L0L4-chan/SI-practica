@@ -27,6 +27,10 @@ public class MagicSquareProblem extends SearchProblem {
     }
 
     @Override
+    public State getInitialState(){
+        return initialSquare;
+    }
+    @Override
     public boolean isGoal(State st) {
         Square sq = (Square) st;
         int sumC = 0, sumF=0, sumD=0;

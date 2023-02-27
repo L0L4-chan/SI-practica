@@ -51,7 +51,12 @@ public class Square extends State {
 
     @Override
     public boolean equals(Object obj) {
-        return false;
+       if (this == obj) return true;
+       if (obj.getClass()== this.getClass()){
+           Square o = (Square)obj;
+           if (o.getN()==this.getN()&& o.getMatrix()==this.getMatrix()) return true;
+       }
+       return false;
     }
 
     @Override
