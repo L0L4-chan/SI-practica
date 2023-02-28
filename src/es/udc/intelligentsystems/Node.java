@@ -2,7 +2,7 @@ package es.udc.intelligentsystems;
 
 public class Node extends State{
     Node father;
-    State state;//revisar y definir correctamente
+    private final State state;//revisar y definir correctamente
 
 
     public Node(Node nd) {

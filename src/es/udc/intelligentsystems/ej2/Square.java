@@ -2,24 +2,22 @@ package es.udc.intelligentsystems.ej2;
 
 import es.udc.intelligentsystems.State;
 
+import java.util.ArrayList;
+
 public class Square extends State {
     private int[][] matrix;
-    private int n ;
+    private final int n;
 
     public Square(int n) {
         this.n = n;
-        matrix= new int[n][n];
+        matrix = new int[n][n];
     }
 
-    public Square(Square toCopy) {
-        this.n = toCopy.getN();
-        matrix= toCopy.getMatrix();
-    }
     public int[][] getMatrix() {
         return matrix;
     }
 
-    public int getPosition(int i, int j){
+    public int getPosition(int i, int j) {
         return matrix[i][j];
     }
 
@@ -27,16 +25,16 @@ public class Square extends State {
         return n;
     }
 
-    public Position getEmptyPosition(){
-        for (int i = 0; i< n; i++) {
+    public Position getEmptyPosition() {
+        for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (this.getPosition(i, j) != 0) {
+                if (this.getPosition(i, j) == 0) {
                     return new Position(i, j);
 
                 }
             }
         }
-            return null;
+        return null;
     }
 
     public void setPosition(Position p, int n) {
@@ -46,21 +44,46 @@ public class Square extends State {
 
     @Override
     public String toString() {
-        return null;
+
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print("|" + getPosition(i, j));
+                if (j == (n - 1)) {
+                    System.out.println("|");
+                }
+            }
+        }
+        return "Esta es la matriz actual";
     }
 
     @Override
     public boolean equals(Object obj) {
-       if (this == obj) return true;
-       if (obj.getClass()== this.getClass()){
-           Square o = (Square)obj;
-           if (o.getN()==this.getN()&& o.getMatrix()==this.getMatrix()) return true;
-       }
-       return false;
+        if (this == obj) return true;
+        if (obj.getClass() == this.getClass()) {
+            Square o = (Square) obj;
+            return o.getN() == this.getN() && o.getMatrix() == this.getMatrix();
+        }
+        return false;
     }
 
     @Override
     public int hashCode() {
         return 0;
+    }
+
+    public ArrayList<Integer> getNotUsed() {
+        ArrayList<Integer> toReturn = new ArrayList<>();
+        for (int i = 1; i <= (n * n); i++) {
+            toReturn.add(i);
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (getPosition(i, j) != 0) {
+                    toReturn.remove((Integer) getPosition(i, j));
+                }
+            }
+        }
+        return toReturn;
     }
 }

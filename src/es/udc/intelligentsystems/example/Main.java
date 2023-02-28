@@ -10,6 +10,9 @@ public class Main {
                                                                                                     VacuumCleanerProblem.VacuumCleanerState.DirtPosition.BOTH );
         SearchProblem aspiradora = new VacuumCleanerProblem(initialState);
 
+        SearchStrategy buscador1 = new GraphSearchStrategy();
+        System.out.println(buscador1.solve(aspiradora));
+
         SearchStrategy buscador = new Strategy4();
         System.out.println(buscador.solve(aspiradora));
     }
