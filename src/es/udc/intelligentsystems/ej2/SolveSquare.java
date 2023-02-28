@@ -51,7 +51,6 @@ public class SolveSquare extends GraphSearchStrategy {
                         nd = border.pop();
                     }
                 }
-                System.out.print("quedan " + availableActions.length );
             }
         }
 

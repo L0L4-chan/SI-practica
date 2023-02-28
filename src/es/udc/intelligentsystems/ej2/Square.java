@@ -54,7 +54,7 @@ public class Square extends State {
                 }
             }
         }
-        return "Esta es la matriz actual";
+        return " ";
     }
 
     @Override
