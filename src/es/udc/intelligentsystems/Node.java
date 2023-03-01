@@ -41,7 +41,7 @@ public class Node extends State{
         }else if (obj.getClass() == this.getClass()) {
             Node nd = new Node((Node) obj);
 
-            return nd.father == this.father && nd.state == this.state;
+            return nd.state == this.state;
 
         }
         return false;

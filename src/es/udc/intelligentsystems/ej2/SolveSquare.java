@@ -18,7 +18,9 @@ public class SolveSquare extends GraphSearchStrategy {
     Stack<Node> border = new Stack<>();
     State currentState = p.getInitialState();
     Node nd = new Node(currentState);
+    countCreated ++;
     explored.add(nd);
+
 
     int i = 1;
 
@@ -34,8 +36,10 @@ public class SolveSquare extends GraphSearchStrategy {
             for (Action acc: availableActions) {
                 State s = p.result(nd.getState(), acc);
                 Node sc = new Node(nd, s);
+
                 if (s != null) {
                     if (!explored.contains(sc)) {
+                        border.add(sc);
                         countCreated++;
                         System.out.println((i++) + " - RESULT(" + nd.getState() + "," + acc + ")=" + s);
                         nd = sc;
@@ -46,11 +50,11 @@ public class SolveSquare extends GraphSearchStrategy {
                         System.out.println((i++) + " - Current state changed to " + currentState);
                     } else {
                         System.out.println((i++) + " - " + s + " already explored");
-                        border.add(new Node(nd, s));
-                    }if (!modified) {
-                        nd = border.pop();
+
                     }
                 }
+            }if (!modified) {
+                nd = border.pop();
             }
         }
 

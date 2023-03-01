@@ -45,11 +45,8 @@ public class SquareAction extends Action {
                 toReturn.setPosition( new Position(i,j), sq.getPosition(i,j)) ;
             }
         }
-        if (sq.getPosition(this.empty.x, this.empty.y)==0){
-            toReturn.setPosition(empty, possible);
-            return toReturn;
-        }
-        return null;
+        toReturn.setPosition(empty, possible);
+        return toReturn;
     }
 
 

@@ -24,9 +24,9 @@ public class Main {
 
         SolveSquare solve = new SolveSquare();
         System.out.print( solve.solve(mp));
-        System.out.print( "Se han creado: " + solve.getCountCreated() + "nodos.");
-        System.out.print( "Se han expandido: " + solve.getCountExpanded() + "nodos.");
-/*
+        System.out.print( "Se han creado: " + solve.getCountCreated() + " nodos.");
+        System.out.print( "Se han expandido: " + solve.getCountExpanded() + " nodos.");
+
         MagicSquareProblem mp2 = new MagicSquareProblem(initial2, 3);
 
         SolveSquare solve2 = new SolveSquare();
@@ -37,14 +37,14 @@ public class Main {
 
         MagicSquareProblem mp3 = new MagicSquareProblem(initial3, 4);
 
-        SolveSquare solve3 = new SolveSquare();
-        System.out.print( solve3.solve(mp));
+       SolveSquare solve3 = new SolveSquare();
+        System.out.print( solve3.solve(mp3));
         System.out.print( "Se han creado: " + solve3.getCountCreated() + "nodos.");
         System.out.print( "Se han expandido: " + solve3.getCountExpanded() + "nodos.");
 
 
 
-*/
+
 
 
     }

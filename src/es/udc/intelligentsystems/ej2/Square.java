@@ -45,16 +45,19 @@ public class Square extends State {
     @Override
     public String toString() {
 
-
+    StringBuilder s = new StringBuilder();
+    String toReturn;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                System.out.print("|" + getPosition(i, j));
+               s.append("|" + getPosition(i, j));
                 if (j == (n - 1)) {
-                    System.out.println("|");
+                    s.append("|");
                 }
             }
+            s.append("\n");
         }
-        return " ";
+        toReturn = s.toString();
+        return toReturn ;
     }
 
     @Override
