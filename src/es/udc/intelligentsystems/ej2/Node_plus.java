@@ -6,19 +6,21 @@ import es.udc.intelligentsystems.State;
 
 public class Node_plus extends Node {
 
-    float valor = 0;
+    float valor;
     Square_H h = new Square_H();
     public Node_plus(Node nd) {
         super(nd);
+        valor = h.evaluate(nd.getState());
     }
 
     public Node_plus(Node father, State state) {
         super(father, state);
+        valor = h.evaluate(state);
     }
 
     public Node_plus(Node father, State state, float valor) {
         super(father, state);
-        this.valor = this.valor + valor;
+        this.valor = valor;
     }
 
     public float getValor() {
@@ -26,13 +28,43 @@ public class Node_plus extends Node {
         return valor;
     }
 
-    public class Square_H extends Heuristic {
+    public static class Square_H extends Heuristic {
 
 
         @Override
         public float evaluate(State e) {
+          Square sq = (Square) e;
+          int n = sq.getN(), toReturn = 0;
+          int sumD1 = 0;
+          int sumD2 = 0;int[] sumF = new int[n];
+          int[] sumC = new int[n];
+          int valor = (n*(n*n +1))/2;
 
-         return 0;
+
+            for (int i = 0 ; i < n ; i++) {
+                for (int j = 0; j < n; j++) {
+                    if(sq.getPosition(i,j)== 0){
+                       toReturn--;
+                    }
+                    sumF[i] = sumF[i] + sq.getPosition(i, j);
+                    sumC[i] = sumC[i] + sq.getPosition(j, i);
+                    if (i == j) {
+                        sumD1 = sumD1 + sq.getPosition(i, j);
+                    }
+                    if (i+j == n-1){
+                        sumD2 = sumD2 + sq.getPosition(i,j);
+                    }
+                }
+            }
+
+            for (int k = 0; k < n ; k++) {
+                if (sumF[k] == valor) toReturn++;
+                if (sumC[k] == valor) toReturn++;
+                if (sumD2 == valor) toReturn++;
+                if (sumD1 == valor) toReturn++;
+            }
+
+         return toReturn;
 
         }
     }
