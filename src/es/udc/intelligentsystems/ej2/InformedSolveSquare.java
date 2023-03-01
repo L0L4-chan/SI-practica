@@ -5,15 +5,11 @@ import es.udc.intelligentsystems.InformedSearchStrategy;
 import es.udc.intelligentsystems.SearchProblem;
 import es.udc.intelligentsystems.State;
 
-public class InformedSolveSquare extends Heuristic implements InformedSearchStrategy {
+public class InformedSolveSquare implements InformedSearchStrategy {
     @Override
     public State solve(SearchProblem p, Heuristic h) throws Exception {
         return null;
     }
 
 
-    @Override
-    public float evaluate(State e) {
-        return 0;
-    }
 }
