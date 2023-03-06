@@ -47,13 +47,13 @@ public class Node_plus extends Node {
           int sumD2 = 0;int[] sumF = new int[n];
           int[] sumC = new int[n];
           int valor = (n*(n*n +1))/2;
-
-
+          int empties = 0;
             for (int i = 0 ; i < n ; i++) {
                 for (int j = 0; j < n; j++) {
-                    if(sq.getPosition(i,j)== 0){
-                       toReturn--;
+                    if(sq.getPosition(i,j)== 0 || sq.getPosition(j,i) == 0 ){
+                       empties ++;
                     }
+
                     sumF[i] = sumF[i] + sq.getPosition(i, j);
                     sumC[i] = sumC[i] + sq.getPosition(j, i);
                     if (i == j) {
@@ -61,22 +61,24 @@ public class Node_plus extends Node {
                     }
                     if (i+j == n-1){
                         sumD2 = sumD2 + sq.getPosition(i,j);
+
+
                     }
                 }
             }
 
             for (int k = 0; k < n ; k++) {
                 if (sumF[k] == valor) toReturn = toReturn + 100;
-                if (sumF[k] >= valor) toReturn = toReturn - 1000;
-                if (sumC[k] >= valor) toReturn = toReturn - 1000;
+                if (sumF[k] <= valor) toReturn = toReturn - 1000 * (valor-sumF[k]) ;
                 if (sumC[k] == valor) toReturn = toReturn + 100;
+                if (sumC[k] <= valor) toReturn = toReturn - 1000* (valor-sumC[k]);
                 if (sumD2 == valor) toReturn = toReturn + 100;
-                if (sumD2 >= valor) toReturn = toReturn - 1000;
+                if (sumD2 <= valor) toReturn = toReturn - 1000* (valor-sumD2);
                 if (sumD1 == valor) toReturn = toReturn + 100;
-                if (sumD1 >= valor) toReturn  = toReturn - 1000;
+                if (sumD1 <= valor) toReturn = toReturn - 1000 * (valor-sumD1);
             }
 
-         return toReturn;
+         return toReturn + (5*empties);
 
         }
     }

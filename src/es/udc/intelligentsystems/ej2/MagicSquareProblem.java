@@ -68,7 +68,7 @@ public class MagicSquareProblem extends SearchProblem {
             }
         }
         Action[] toReturn = new Action[count];
-        for (int j= 0; j<count; j++){
+        for (int j = 0; j<count; j++){
             toReturn[j] = act.pop();
         }
 

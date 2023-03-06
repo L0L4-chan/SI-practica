@@ -47,7 +47,7 @@ public class SolveSquare extends GraphSearchStrategy {
                         explored.add(sc);
                         countExpanded++;
                         modified = true;
-                        System.out.println((i++) + " - Current state changed to " + currentState);
+                        System.out.println((i++) + " - Current state changed to " + sc);
                     } else {
                         System.out.println((i++) + " - " + s + " already explored");
 

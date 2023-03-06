@@ -42,13 +42,13 @@ public class InformedSolveSquare implements InformedSearchStrategy {
                             countCreated++;
                             System.out.println((i++) + " - RESULT(" + nd.getState() + "," + acc + ")=" + s);
                             nd = sc;
-                            System.out.println((i++) + " - " + sc + " NOT explored");
+                            System.out.println((i++) + " - \n" + sc + "\n NOT explored");
                             explored.add(sc);
                             countExpanded++;
                             modified = true;
-                            System.out.println((i++) + " - Current state changed to " + currentState);
+                            System.out.println((i++) + " - Current state changed to \n" + sc);
                         } else {
-                            System.out.println((i++) + " - " + s + " already explored");
+                            System.out.println((i++) + " - \n" + s + "\n already explored");
 
                         }
                     }
