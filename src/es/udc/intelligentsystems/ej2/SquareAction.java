@@ -23,26 +23,34 @@ public class SquareAction extends Action {
         Square sq = (Square) st;
         int column=0, row= 0, n = sq.getN(), obj;
         obj = (n * (n * n +1))/2;
-        int for_row = 0, for_col = 0;
+        //int for_row = 0, for_col = 0;
+        //boolean readyr  = false, readyc = false;
+
         if (sq.getPosition(this.empty.x, this.empty.y)==0) {
             for (int i = 0; i < n; i++) {
-                int a = sq.getPosition(empty.x, i);
-                if (i != this.empty.y && a==0) for_row ++;
+                //int a = sq.getPosition(empty.x, i);
+               // if (i != this.empty.y && a == 0) for_row++;
                 row = row + sq.getPosition(empty.x, i);
-                int b = sq.getPosition(i, empty.y);
-                if(i!= this.empty.x && b == 0) for_col++;
+                //int b = sq.getPosition(i, empty.y);
+               // if (i != this.empty.x && b == 0) for_col++;
                 column = column + sq.getPosition(i, empty.y);
             }
-            if (for_col == 0) {
-                if (column + possible != obj) {
-                    return false;
-                }
-            }
-            if (for_row == 0) {
-                    if(row + possible != obj) {
-                        return false;
-                    }
-            }else return (row + possible < obj) && (column + possible < obj);
+            //if (for_col == 0) {
+             //   if (column + possible != obj) {
+              //      return false;
+            //    }
+            //    readyc = true;
+           // }
+           // if (for_row == 0) {
+           //     if (row + possible != obj) {
+            //        return false;
+            //    }
+           //     readyr = true;
+           // }
+           // if (readyr && readyc){
+           //     return true;
+        //}
+        return (row + possible <= obj) && (column + possible <= obj);
 
         }
         return false;
