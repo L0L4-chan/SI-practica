@@ -13,6 +13,10 @@ public class Node_plus extends Node {
         valor = h.evaluate(nd.getState());
     }
 
+    public Node_plus(State nd) {
+        super(nd);
+        valor = h.evaluate(getState());
+    }
     public Node_plus(Node father, State state) {
         super(father, state);
         valor = h.evaluate(state);
@@ -23,8 +27,12 @@ public class Node_plus extends Node {
         this.valor = valor;
     }
 
-    public float getValor() {
+    public float getHValor() {
         valor = h.evaluate(this.getState());
+        return valor;
+    }
+
+    public float getValor(){
         return valor;
     }
 
@@ -58,10 +66,14 @@ public class Node_plus extends Node {
             }
 
             for (int k = 0; k < n ; k++) {
-                if (sumF[k] == valor) toReturn++;
-                if (sumC[k] == valor) toReturn++;
-                if (sumD2 == valor) toReturn++;
-                if (sumD1 == valor) toReturn++;
+                if (sumF[k] == valor) toReturn = toReturn + 100;
+                if (sumF[k] >= valor) toReturn = toReturn - 1000;
+                if (sumC[k] >= valor) toReturn = toReturn - 1000;
+                if (sumC[k] == valor) toReturn = toReturn + 100;
+                if (sumD2 == valor) toReturn = toReturn + 100;
+                if (sumD2 >= valor) toReturn = toReturn - 1000;
+                if (sumD1 == valor) toReturn = toReturn + 100;
+                if (sumD1 >= valor) toReturn  = toReturn - 1000;
             }
 
          return toReturn;
