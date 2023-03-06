@@ -37,7 +37,7 @@ public class InformedSolveSquare implements InformedSearchStrategy {
                     Node_plus sc = new Node_plus(nd, s);
 
                     if (s != null) {
-                        if (!explored.contains(sc)) {
+                        if (!explored.contains(sc)&& !border.contains(sc)) {
                             border.add(sc);
                             countCreated++;
                             System.out.println((i++) + " - RESULT(" + nd.getState() + "," + acc + ")=" + s);

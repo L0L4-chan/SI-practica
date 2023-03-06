@@ -38,7 +38,7 @@ public class SolveSquare extends GraphSearchStrategy {
                 Node sc = new Node(nd, s);
 
                 if (s != null) {
-                    if (!explored.contains(sc)) {
+                    if (!explored.contains(sc) && !border.contains(sc)) {
                         border.add(sc);
                         countCreated++;
                         System.out.println((i++) + " - RESULT(" + nd.getState() + "," + acc + ")=" + s);
